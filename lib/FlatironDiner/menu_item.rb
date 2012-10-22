@@ -1,1 +1,1 @@
-MenuItem = Struct.new :name
+MenuItem = Struct.new :name, :price, :calorie_count, :ingredients
