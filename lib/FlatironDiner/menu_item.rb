@@ -1,1 +1,1 @@
-MenuItem = Struct.new "MenuItem"
+MenuItem = Struct.new :name
