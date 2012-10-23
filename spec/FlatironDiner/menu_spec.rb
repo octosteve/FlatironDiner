@@ -36,6 +36,10 @@ describe Menu do
 
       subject.show.should == result
     end
+
+    it "returns an item based on item number" do 
+      @menu.fetch(1).name.should == "Awesome Hotdogs"
+    end
   end
 end
 
