@@ -24,5 +24,21 @@ describe Order do
 
     order.show.should == ["Bacon x1", "Eggs x2"]
   end
+
+  it "calculates an order's total" do
+    bacon = MenuItem.new
+    bacon.price = "4.99"
+
+    eggs = MenuItem.new
+    eggs.price = "5.99"
+
+    order = Order.new
+
+    order.add bacon
+    order.add eggs
+    order.add eggs
+
+    order.total.should == 16.97
+  end
 end
 
