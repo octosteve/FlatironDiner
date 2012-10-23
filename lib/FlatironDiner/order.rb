@@ -10,12 +10,22 @@ class Order
   end
 
   def show
-    items.map {|item, count| format_output item, count }
+    items.map {|item| format_output item }
+  end
+
+  def total
+    items.inject(0){|memo, item| memo += total_per_item(item)}
   end
 
   private
 
-  def format_output(item, count)
+  def total_per_item(item_array)
+    item, quantity = item_array
+    item.price.to_f * quantity
+  end
+
+  def format_output(item_array)
+    item, count = item_array 
     "#{item.name} x#{count}" 
   end
 end
