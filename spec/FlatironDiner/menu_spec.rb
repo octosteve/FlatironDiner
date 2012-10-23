@@ -31,7 +31,7 @@ describe Menu do
     menu.add menu_item
     menu.add menu_item2
 
-    result = ["1.Awesome Hotdogs, only $2.99!", "2. Chunky Bacon, only $0.99!"]
+    result = ["1. Awesome Hotdogs, only $2.99!", "2. Chunky Bacon, only $0.99!"]
     menu.show.should == result
   end
 end

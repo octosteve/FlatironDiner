@@ -1,13 +1,15 @@
 class Menu
+  def initialize
+    @items = []
+  end
+
   def add(menu_item)
-    @called_add = true
+    @items << menu_item
   end
   
   def show
-    if @called_add
-      ["1. Awesome Hotdogs, only $2.99!"]
-    else
-      []
+    @items.map.with_index do |item, position|
+      "#{position + 1}. #{item.name}, only $#{item.price}!"
     end
   end
 end
