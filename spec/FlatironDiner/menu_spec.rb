@@ -14,8 +14,13 @@ describe Menu do
       menu_item
     end
 
+    subject do 
+      menu = Menu.new
+      menu.add  menu_item
+      menu
+    end
+
     it "can have MenuItems added to it" do 
-      subject.add menu_item
       subject.show.should == ["1. Awesome Hotdogs, only $2.99!"]
     end
 
@@ -25,7 +30,6 @@ describe Menu do
       menu_item2.name = "Chunky Bacon"
       menu_item2.price = "0.99"
 
-      subject.add menu_item
       subject.add menu_item2
 
       result = ["1. Awesome Hotdogs, only $2.99!", "2. Chunky Bacon, only $0.99!"]
