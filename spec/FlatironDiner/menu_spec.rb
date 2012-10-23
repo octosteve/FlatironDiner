@@ -4,6 +4,13 @@ describe Menu do
 
   context "with no items" do 
     its(:show) { should be_empty }
+
+    it "returns nil if invalid fetch value given" do 
+      subject.fetch(1).should be_nil
+      subject.fetch(-1).should be_nil
+      subject.fetch(100).should be_nil
+      subject.fetch("yogurt").should be_nil
+    end
   end
 
   context "with items in it" do
