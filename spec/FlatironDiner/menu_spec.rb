@@ -9,6 +9,7 @@ describe Menu do
     menu = Menu.new
 
     menu.add menu_item
+    menu.show.should == ["1. Awesome Hotdogs, only $2.99!"]
   end
 
 end
