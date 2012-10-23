@@ -27,10 +27,11 @@ describe Menu do
       menu
     end
 
-    it "can have MenuItems added to it" do 
-      subject.show.should == ["1. Awesome Hotdogs, only $2.99!"]
-    end
+    its(:show) { should == ["1. Awesome Hotdogs, only $2.99!"]}
 
+    it "returns an item based on item number" do 
+      subject.fetch(1).name.should == "Awesome Hotdogs"
+    end
 
     it "can have multiple items in it" do
       menu_item2 = MenuItem.new 
@@ -44,9 +45,6 @@ describe Menu do
       subject.show.should == result
     end
 
-    it "returns an item based on item number" do 
-      subject.fetch(1).name.should == "Awesome Hotdogs"
-    end
   end
 end
 
