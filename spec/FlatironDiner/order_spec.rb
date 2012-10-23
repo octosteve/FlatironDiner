@@ -1,39 +1,30 @@
 require 'spec_helper'
 
 describe Order do
-  it "responds to add" do 
-    bacon = MenuItem.new
-    subject.add bacon
-
-    subject.items.should include bacon
+  let(:bacon) do 
+    b = MenuItem.new
+    b.name = "Bacone"
+    b.price = "4.99"
+    b
   end
 
-  it "keeps track of item count" do 
-    bacon = MenuItem.new
-    bacon.name = "Bacon"
-
-    eggs = MenuItem.new
-    eggs.name = "Eggs"
-
-    subject.add bacon
-    subject.add eggs
-    subject.add eggs
-
-    subject.show.should == ["Bacon x1", "Eggs x2"]
+  let(:eggs) do
+    e = MenuItem.new
+    e.name = "Eggs"
+    e.price = "5.99"
+    e
   end
 
-  it "calculates an order's total" do
-    bacon = MenuItem.new
-    bacon.price = "4.99"
-
-    eggs = MenuItem.new
-    eggs.price = "5.99"
-
-    subject.add bacon
-    subject.add eggs
-    subject.add eggs
-
-    subject.total.should == 16.97
+  subject do 
+    order = Order.new
+    order.add bacon
+    order.add eggs
+    order.add eggs
+    order
   end
+
+  its(:show) { should match_array ["Bacone x1", "Eggs x2"]}
+  its(:total) { should == 16.97 }
+
 end
 
