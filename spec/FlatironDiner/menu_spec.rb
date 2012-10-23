@@ -12,5 +12,9 @@ describe Menu do
     menu.show.should == ["1. Awesome Hotdogs, only $2.99!"]
   end
 
+  it "can have no items in it" do
+    menu = Menu.new
+    menu.show.should == []
+  end
 end
 
