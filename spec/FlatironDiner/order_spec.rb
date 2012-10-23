@@ -2,17 +2,11 @@ require 'spec_helper'
 
 describe Order do
   let(:bacon) do 
-    b = MenuItem.new
-    b.name = "Bacone"
-    b.price = "4.99"
-    b
+    MenuItem.new "Bacone", "4.99"
   end
 
   let(:eggs) do
-    e = MenuItem.new
-    e.name = "Eggs"
-    e.price = "5.99"
-    e
+    MenuItem.new "Eggs" , "5.99"
   end
 
   subject do 
