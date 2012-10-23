@@ -10,8 +10,13 @@ class Order
   end
 
   def show
-    items.map {|item, count| "#{item.name} x#{count}" }
+    items.map {|item, count| format_output item, count }
   end
 
+  private
+
+  def format_output(item, count)
+    "#{item.name} x#{count}" 
+  end
 end
 
