@@ -1,0 +1,1 @@
+Menu = Struct.new("Menu")
