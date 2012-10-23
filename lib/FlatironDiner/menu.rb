@@ -4,11 +4,11 @@ class Menu
   end
 
   def add(menu_item)
-    @items << menu_item
+    items << menu_item
   end
   
   def show
-    @items.map.with_index do |item, position|
+    items.map.with_index do |item, position|
       format_output(item, position)
     end
   end
