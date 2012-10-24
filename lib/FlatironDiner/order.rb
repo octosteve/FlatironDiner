@@ -17,6 +17,9 @@ class Order
     items.inject(0){|memo, item| memo += total_per_item(item)}
   end
 
+  def menu_items
+    items.keys
+  end
   private
 
   def total_per_item(item_array)

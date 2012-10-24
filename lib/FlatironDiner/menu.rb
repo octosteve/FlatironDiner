@@ -17,6 +17,10 @@ class Menu
     items[item_number.to_i - 1]
   end
 
+  def menu_items
+    items
+  end
+
   private
 
   def items

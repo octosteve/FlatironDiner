@@ -28,6 +28,7 @@ describe Menu do
     end
 
     its(:show) { should == ["1. Awesome Hotdogs, only $2.99!"]}
+    its(:menu_items) { should == [menu_item]}
 
     it "returns an item based on item number" do 
       subject.fetch(1).name.should == "Awesome Hotdogs"

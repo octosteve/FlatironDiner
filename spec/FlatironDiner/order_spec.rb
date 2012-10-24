@@ -19,6 +19,7 @@ describe Order do
 
   its(:show) { should match_array ["Bacone x1", "Eggs x2"]}
   its(:total) { should == 16.97 }
+  its(:menu_items) { should match_array [bacon, eggs] }
 
 end
 
