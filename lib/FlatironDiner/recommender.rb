@@ -11,11 +11,15 @@ class Recommender
   private
 
   def find_similar_items
-    @similar = @order.menu_items.collect do |order_mi|
-      @menu.menu_items.collect do |menu_mi|
+    @order.menu_items.each_with_object([]) do |order_mi, similar|
+      @menu.menu_items.each do |menu_mi|
         next if menu_mi == order_mi
-        menu_mi unless (order_mi.ingredients & menu_mi.ingredients).empty?
+        similar << menu_mi if ingredients_shared?(order_mi, menu_mi)
       end
-    end.flatten.compact
+    end
+  end
+  
+  def ingredients_shared?(order_mi, menu_mi)
+    !(order_mi.ingredients & menu_mi.ingredients).empty?
   end
 end
