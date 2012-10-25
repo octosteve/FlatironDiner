@@ -3,12 +3,12 @@ require 'spec_helper'
 describe MenuItem do 
 
   subject do 
-    mi = MenuItem.new
-    mi.name = "Chunky Bacon"
-    mi.price = "2.99"
-    mi.calorie_count = 256
-    mi.ingredients = [:bacon, :thats_it]
-    mi
+    MenuItem.new.tap do |mi|
+      mi.name = "Chunky Bacon"
+      mi.price = "2.99"
+      mi.calorie_count = 256
+      mi.ingredients = [:bacon, :thats_it]
+    end
   end
 
   its(:name)          { should == "Chunky Bacon"      }

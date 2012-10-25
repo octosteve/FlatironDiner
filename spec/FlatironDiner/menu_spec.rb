@@ -15,17 +15,13 @@ describe Menu do
 
   context "with items in it" do
     let(:menu_item) do 
-      menu_item = MenuItem.new 
-      menu_item.name = "Awesome Hotdogs"
-      menu_item.price = "2.99"
-      menu_item
+      MenuItem.new.tap do |mi|
+        mi.name = "Awesome Hotdogs"
+        mi.price = "2.99"
+      end
     end
 
-    subject do 
-      menu = Menu.new
-      menu.add  menu_item
-      menu
-    end
+    subject { Menu.new.tap {|m| m.add menu_item } }
 
     its(:show) { should == ["1. Awesome Hotdogs, only $2.99!"]}
     its(:menu_items) { should == [menu_item]}
@@ -35,9 +31,10 @@ describe Menu do
     end
 
     it "can have multiple items in it" do
-      menu_item2 = MenuItem.new 
-      menu_item2.name = "Chunky Bacon"
-      menu_item2.price = "0.99"
+      menu_item2 = MenuItem.new.tap do |mi| 
+        mi.name = "Chunky Bacon"
+        mi.price = "0.99"
+      end
 
       subject.add menu_item2
 

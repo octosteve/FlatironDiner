@@ -1,43 +1,39 @@
 require 'spec_helper'
 
 describe Recommender do 
+  let(:menu) { Menu.new }
+  let(:order) { Order.new }
+
+  let(:bacon) do 
+    MenuItem.new.tap do |mi|
+      mi.name = "Chunky Bacon"
+      mi.ingredients = [:bacon]
+    end
+  end
+
+  let(:veggie_burger) do
+    MenuItem.new.tap do |mi|
+      mi.name = "Brocolli"
+      mi.ingredients = [:veggies, :unspeakable]
+    end
+  end
+
   it "returns an empty array if there are no matches" do
-    menu = Menu.new
-
-    bacon = MenuItem.new
-    bacon.name = "Chunky Bacon"
-    bacon.ingredients = [:bacon]
-
-    veggie_burger = MenuItem.new
-    veggie_burger.name = "Brocolli"
-    veggie_burger.ingredients = [:veggies, :unspeakable]
-                
     [bacon, veggie_burger].each {|item| menu.add item}
-    order = Order.new
 
     order.add bacon
 
     recommender = Recommender.new menu: menu, order: order
-
     recommender.recomendations.should be_empty
   end
+
   it "returns a list of items with similar ingredients" do
-    menu = Menu.new
+    bacone = MenuItem.new.tap do |mi|
+      mi.name = "Bacone"
+      mi.ingredients =  [:bacon, :scrambled_eggs, :cheese, :hash_browns, :gravy, :biscuit] 
+    end
 
-    bacon = MenuItem.new
-    bacon.name = "Chunky Bacon"
-    bacon.ingredients = [:bacon]
-
-    bacone = MenuItem.new
-    bacone.name = "Bacone"
-    bacone.ingredients =  [:bacon, :scrambled_eggs, :cheese, :hash_browns, :gravy, :biscuit] 
-
-    veggie_burger = MenuItem.new
-    veggie_burger.name = "Brocolli"
-    veggie_burger.ingredients = [:veggies, :unspeakable]
-    
     [bacon, bacone, veggie_burger].each {|item| menu.add item}
-    order = Order.new
 
     order.add bacon
 
